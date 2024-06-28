@@ -16,8 +16,7 @@ unsigned int control_frequency = 1000; // Hz
 
 void ctrl_c_handler(int s)
 {
-    std::cout << "exiting" << std::endl;
-    master.stop();
+    master.ctrl_c_exiting();
 }
 
 /****************************************************************************/
@@ -42,16 +41,16 @@ void control_callback()
 
 int main(int argc, char **argv)
 {
-    master.printInfo("EC_Device start");
+    ECDevice::Master::printInfo("EC_Device start");
 
 
-    master.setCtrlCHandler(ctrl_c_handler);
+    ECDevice::Master::setCtrlCHandler(ctrl_c_handler);
 
     master.addSlave(0,0,&bh_ek1100);
     master.addSlave(0,1,&bh_el1008);
 
 //    master.setThreadHighPriority();
-    master.setThreadRealTime();
+    ECDevice::Master::setThreadRealTime();
 
     master.activate();
 
@@ -59,9 +58,9 @@ int main(int argc, char **argv)
 
 
 
-    master.printInfo(fmt::format("run time : {}", master.elapsedTime()));
-    master.printInfo(fmt::format("updates : {}", master.elapsedCycles()));
-    master.printInfo(fmt::format("frequency : {}", master.elapsedCycles()/master.elapsedTime()));
+    ECDevice::Master::printInfo(fmt::format("run time : {}", master.elapsedTime()));
+    ECDevice::Master::printInfo(fmt::format("updates : {}", master.elapsedCycles()));
+    ECDevice::Master::printInfo(fmt::format("frequency : {}", master.elapsedCycles()/master.elapsedTime()));
 
     return 0;
 }

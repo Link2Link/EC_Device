@@ -562,7 +562,13 @@ namespace ECDevice {
             memset(dummy, 0, MAX_SAFE_STACK);
         }
 
+        void ctrl_c_exiting()
+        {
+            printInfo("exiting");
+            this->stop();
+        }
     };
+
 
 
 }
