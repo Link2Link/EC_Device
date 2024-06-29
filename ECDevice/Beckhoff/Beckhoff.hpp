@@ -23,5 +23,6 @@
 
 #include "Beckhoff/EK1100.hpp"
 #include "Beckhoff/EL1008.hpp"
+#include "Beckhoff/EL1124.hpp"
 
 #endif

@@ -1,0 +1,7 @@
+name: xiaoming
+sex: male
+age: 18
+system:
+  port: 0
+  value: 0
+  int_vec: [10, 20]
